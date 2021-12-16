@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>10</LangVersion>
+
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Platforms>x64;x86</Platforms>
+
+		<!-- Generator related -->
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+
+		<!-- Shared for all configurations -->
+		<OutputPath>..\..\output\$(Configuration)-$(Platform)\</OutputPath>
+		<IntermediateOutputPath>$(ProjectDir)..\..\buildstage\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.0.1" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+	</ItemGroup>
+
+</Project>

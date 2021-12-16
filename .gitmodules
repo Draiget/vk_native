@@ -1,0 +1,4 @@
+[submodule "dependencies/vk-docs"]
+	path = dependencies/vk-docs
+	url = https://github.com/KhronosGroup/Vulkan-Docs.git
+	branch = main

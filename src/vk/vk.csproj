@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Platforms>x64;x86</Platforms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>vk</AssemblyName>
+		<LangVersion>10</LangVersion>
+
+		<!-- Shared for all configurations -->
+		<OutputPath>..\..\output\$(Configuration)-$(Platform)\</OutputPath>
+		<IntermediateOutputPath>$(ProjectDir)..\..\buildstage\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\generated</CompilerGeneratedFilesOutputPath>
+		<ImplicitProjectForwarding>true</ImplicitProjectForwarding>
+		<ImplicitProjectGeneration>true</ImplicitProjectGeneration>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="generated\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<CompilerVisibleProperty Include="MSBuildProjectDirectory" />
+		<CompilerVisibleProperty Include="ProjectDir" />
+
+		<!--
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\xml\vk.xml" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\resources.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\descriptorsets.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\queries.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\pipelines.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\samplers.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\fragops.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\cmdbuffers.txt" />
+		-->
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\xml\vk.xml" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\resources.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\descriptorsets.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\queries.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\pipelines.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\samplers.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\fragops.txt" />
+		<AdditionalFiles Include="..\..\dependencies\vk-docs\chapters\cmdbuffers.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\vk.generator\vk.gen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+</Project>

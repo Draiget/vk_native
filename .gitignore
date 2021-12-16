@@ -1,0 +1,10 @@
+# VS temp objects
+obj/
+bin/
+**.spv
+.vs/
+
+# Binaries and output libs
+output/
+buildstage/
+publish/
