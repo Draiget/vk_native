@@ -20,5 +20,9 @@ internal class SpecStructure
     /// </summary>
     public bool IsReturnUsageOnly { get; set; }
 
+    public List<SpecStructureMember> Members { get; set; }
 
+    public SpecStructure() {
+        Members = new List<SpecStructureMember>();
+    }
 }

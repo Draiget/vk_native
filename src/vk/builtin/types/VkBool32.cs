@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace vk.builtin.types;
+﻿namespace vk.builtin.types;
 
 /// <summary>
 /// <p>Vulkan boolean type stored in a 4-byte unsigned integer.</p>

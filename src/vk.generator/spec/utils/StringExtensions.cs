@@ -45,6 +45,7 @@ internal static class StringExtensions
     }
 
     private static readonly Dictionary<string, Type> VulkanToLocalTypeMap = new() {
+        { "uint8_t", typeof(ushort) },
         { "uint16_t", typeof(ushort) },
         { "uint32_t", typeof(uint) },
         { "uint64_t", typeof(ulong) },
@@ -72,6 +73,14 @@ internal static class StringExtensions
         }
 
         return Type.GetType(type);
+    }
+
+    public static string ToSharpTypeShort(this string type) {
+        if (VulkanToLocalTypeMap.ContainsKey(type)) {
+            return VulkanToLocalTypeMap[type].ToShortName();
+        }
+
+        return type;
     }
 
     public static string ToShortName(this Type self) {

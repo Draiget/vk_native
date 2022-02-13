@@ -18,11 +18,14 @@
 		<CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\generated</CompilerGeneratedFilesOutputPath>
 		<ImplicitProjectForwarding>true</ImplicitProjectForwarding>
 		<ImplicitProjectGeneration>true</ImplicitProjectGeneration>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
+    <!--
 	<ItemGroup>
 		<Folder Include="generated\" />
 	</ItemGroup>
+	-->
 
 	<ItemGroup>
 		<CompilerVisibleProperty Include="MSBuildProjectDirectory" />
@@ -49,6 +52,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\vk.generator\vk.gen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\vk.generator\vk.gen.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 	</ItemGroup>
 </Project>

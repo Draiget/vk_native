@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace vk.builtin;
 
+using VkFlags = UInt32;
+
 public static partial class VulkanNative
 {
 }

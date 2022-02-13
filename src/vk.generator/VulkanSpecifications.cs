@@ -11,6 +11,7 @@ internal class VulkanSpecifications
 {
     private readonly VulkanSpecCodeWriter _cw;
 
+    public List<SpecType> Types { get; private set; }
     public List<SpecEnum> Enums { get; private set; }
     public List<SpecConstant> Constants { get; private set; }
     public List<SpecUnion> Unions { get; private set; }
@@ -19,6 +20,7 @@ internal class VulkanSpecifications
     public VulkanSpecifications(GeneratorExecutionContext context) {
         _cw = new VulkanSpecCodeWriter(context);
 
+        Types = new List<SpecType>();
         Enums = new List<SpecEnum>();
         Constants = new List<SpecConstant>();
         Unions = new List<SpecUnion>();
@@ -52,11 +54,16 @@ internal class VulkanSpecifications
             throw new ArgumentException("Invalid specifications xml, types is not defined or empty");
         }
 
+        var enums = EnumSpecConsumer.From(elementsEnum, elementsExt);
+        var constants = ConstantSpecConsumer.From(elementsEnum);
+        var types = TypesSpecConsumer.From(elementsTypes);
+
         var specs = new VulkanSpecifications(context) {
-            Enums = EnumSpecConsumer.From(elementsEnum, elementsExt),
-            Constants = ConstantSpecConsumer.From(elementsEnum),
+            Types = types,
+            Enums = enums,
+            Constants = constants,
             Unions = UnionSpecConsumer.From(elementsTypes),
-            Structures = StructureSpecConsumer.From(elementsTypes)
+            Structures = StructureSpecConsumer.From(elementsTypes, constants, types)
         };
 
         ResourcesConsumer.Process(chaptersResources["resources"], specs.Enums);
@@ -73,5 +80,6 @@ internal class VulkanSpecifications
         EnumSpecGenerator.Process(Enums, _cw);
         ConstantSpecGenerator.Process(Constants, _cw);
         UnionSpecGenerator.Process(Unions, this, _cw);
+        StructureSpecGenerator.Process(Structures, _cw);
     }
 }
